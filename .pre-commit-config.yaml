@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: trufflehog
+        name: Check for secrets
+        entry: trufflehog --no-update git file://. --since-commit HEAD --no-verification --results=verified,unknown,unverified --fail --trust-local-git-config
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]

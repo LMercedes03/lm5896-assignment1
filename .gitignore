@@ -1,1 +1,16 @@
 __pycache__/
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.py[cod]
+*.log
+*.key
+*.pem
+.env
+.env.*
+checkpoint*.json
+dist/
+build/
