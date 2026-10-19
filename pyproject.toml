@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "lm5896-assignment1"
+version = "0.2.0"
+description = "Rekor artifact inclusion and checkpoint consistency verifier"
+authors = ["Leonard Mercedes"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.11,<4.0"
+requests = "^2.34.2"
+cryptography = "^50.0.2"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.17.1"
+mypy = "^2.4.0"
+bandit = "^1.9.4"
+pytest = "^9.1.1"
+pytest-cov = "^7.1.0"
+pre-commit = "^4.7.0"
+radon = "^6.0.1"
+types-requests = "*"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 88
+include = ["*.py", "pyproject.toml"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.mypy]
+python_version = "3.11"
+files = ["main.py", "merkle_proof.py", "util.py"]
+warn_unused_ignores = true
+
+[tool.bandit]
+exclude_dirs = ["tests"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "--cov=main --cov=merkle_proof --cov=util --cov-report=term-missing --cov-fail-under=75"
